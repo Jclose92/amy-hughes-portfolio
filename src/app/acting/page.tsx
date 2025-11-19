@@ -316,7 +316,7 @@ export default function Acting() {
                   <div style={{ 
                     position: 'relative',
                     width: '100%',
-                    maxWidth: '600px',
+                    maxWidth: isMobile ? '100%' : '500px',
                     aspectRatio: '16 / 9',
                     height: 'auto'
                   }}>

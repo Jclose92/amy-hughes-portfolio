@@ -203,12 +203,12 @@ export default function Contact() {
               <Image 
                 src="/images/british-american-talent-logo-light-theme.png" 
                 alt="British American Talent" 
-                width={120}
-                height={60}
+                width={isMobile ? 120 : 180}
+                height={isMobile ? 60 : 90}
                 style={{ 
                   objectFit: 'contain',
                   filter: 'brightness(0) saturate(100%) invert(54%) sepia(18%) saturate(1247%) hue-rotate(353deg) brightness(91%) contrast(87%)',
-                  marginTop: '-5px'
+                  marginTop: isMobile ? '-5px' : '-10px'
                 }}
               />
             </div>
@@ -241,13 +241,13 @@ export default function Contact() {
               <Image 
                 src="/images/Volcanic-logo-light-theme.png" 
                 alt="Volcanic Talent" 
-                width={160}
-                height={80}
+                width={isMobile ? 160 : 240}
+                height={isMobile ? 80 : 120}
                 style={{ 
                   objectFit: 'contain',
                   filter: 'brightness(0) saturate(100%) invert(54%) sepia(18%) saturate(1247%) hue-rotate(353deg) brightness(91%) contrast(87%)',
-                  marginLeft: '60px',
-                  marginTop: '50px'
+                  marginLeft: isMobile ? '60px' : '110px',
+                  marginTop: isMobile ? '50px' : '80px'
                 }}
               />
             </div>

@@ -193,12 +193,12 @@ export default function Home() {
     setBioHtml(finalHtml)
   }, [bioText, isMobile])
 
-  // Hide loading screen once bio is rendered
+  // Hide loading screen once bio is rendered (or immediately on mobile once bioText loads)
   useEffect(() => {
-    if (bioHtml) {
+    if (bioHtml || (isMobile && bioText)) {
       setTimeout(() => setIsLoading(false), 50)
     }
-  }, [bioHtml])
+  }, [bioHtml, isMobile, bioText])
 
   return (
     <MediaPlayerProvider>

@@ -19,32 +19,32 @@ export default function Navigation() {
   }, [])
 
   return (
-    <nav style={{ display: 'flex', gap: isMobile ? '1.5rem' : '3rem', alignItems: 'center' }}>
+    <nav style={{ display: 'flex', gap: isMobile ? '0.8rem' : '3rem', alignItems: 'center', padding: isMobile ? '0 0.5rem' : '0' }}>
       <Link href="/" style={{
         color: '#C28950',
-        fontSize: isMobile ? '2.8rem' : '3.12rem',
+        fontSize: isMobile ? '2.2rem' : '3.12rem',
         textShadow: '1px 1px 3px rgba(0, 0, 0, 0.5)',
         marginRight: 'auto',
         fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
         textDecoration: 'none'
       }}>{isMobile ? 'AH' : 'Amy Hughes'}</Link>
-      <div style={{ display: 'flex', gap: isMobile ? '1.5rem' : '3rem', marginRight: 'auto', marginLeft: 'auto' }}>
+      <div style={{ display: 'flex', gap: isMobile ? '0.8rem' : '3rem', marginRight: 'auto', marginLeft: 'auto' }}>
         <Link href="/" style={{
           color: '#C28950',
           textDecoration: 'none',
-          fontSize: isMobile ? '2.4rem' : '3.12rem',
+          fontSize: isMobile ? '2rem' : '3.12rem',
           textTransform: 'uppercase'
         }}>Amy</Link>
         <Link href="/acting" style={{
           color: '#C28950',
           textDecoration: 'none',
-          fontSize: isMobile ? '2.4rem' : '3.12rem',
+          fontSize: isMobile ? '2rem' : '3.12rem',
           textTransform: 'uppercase'
         }}>Work</Link>
         <Link href="/contact" style={{
           color: '#C28950',
           textDecoration: 'none',
-          fontSize: isMobile ? '2.4rem' : '3.12rem',
+          fontSize: isMobile ? '2rem' : '3.12rem',
           textTransform: 'uppercase'
         }}>Contact</Link>
       </div>

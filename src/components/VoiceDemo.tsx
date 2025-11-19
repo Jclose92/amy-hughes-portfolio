@@ -16,6 +16,19 @@ export default function VoiceDemo({ demo }: VoiceDemoProps) {
   const audioRef = useRef<HTMLAudioElement>(null)
   const idRef = useRef(`voice-demo-${demo.id}`)
   const mediaPlayer = useMediaPlayer()
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const updateIsMobile = () => {
+      if (typeof window !== 'undefined') {
+        setIsMobile(window.innerWidth <= 768)
+      }
+    }
+
+    updateIsMobile()
+    window.addEventListener('resize', updateIsMobile)
+    return () => window.removeEventListener('resize', updateIsMobile)
+  }, [])
 
   useEffect(() => {
     if (audioRef.current) {
@@ -37,7 +50,7 @@ export default function VoiceDemo({ demo }: VoiceDemoProps) {
   }, [mediaPlayer, demo.id])
 
   return (
-    <div key={demo.id} style={{ maxWidth: '600px' }}>
+    <div key={demo.id} style={{ maxWidth: isMobile ? '100%' : '500px' }}>
       <h3 style={{
         color: '#FFFFFF',
         marginBottom: '0.5rem',
