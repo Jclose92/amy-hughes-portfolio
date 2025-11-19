@@ -37,7 +37,7 @@ export default function VoiceDemo({ demo }: VoiceDemoProps) {
   }, [mediaPlayer, demo.id])
 
   return (
-    <div key={demo.id}>
+    <div key={demo.id} style={{ maxWidth: '600px' }}>
       <h3 style={{
         color: '#FFFFFF',
         marginBottom: '0.5rem',

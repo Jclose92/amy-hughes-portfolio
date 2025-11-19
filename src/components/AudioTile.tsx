@@ -93,15 +93,15 @@ export default function AudioTile({ url, title, description, onPlay, onLightboxC
             }}
             style={{
               position: 'absolute',
-              top: '1.25rem',
-              right: '1.25rem',
-              width: '28px',
-              height: '28px',
-              minWidth: '28px',
-              minHeight: '28px',
-              background: 'rgba(28, 28, 28, 0.9)',
-              border: 'none',
-              borderRadius: '4px',
+              top: '0.75rem',
+              right: '0.75rem',
+              width: '36px',
+              height: '36px',
+              minWidth: '36px',
+              minHeight: '36px',
+              background: 'rgba(194, 137, 80, 0.95)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: '6px',
               color: '#FFFFFF',
               cursor: 'pointer',
               display: 'flex',
@@ -113,8 +113,8 @@ export default function AudioTile({ url, title, description, onPlay, onLightboxC
               zIndex: 100,
               transition: 'background 0.2s'
             }}
-            onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(28, 28, 28, 1)'}
-            onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(28, 28, 28, 0.9)'}
+            onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(194, 137, 80, 1)'}
+            onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(194, 137, 80, 0.95)'}
             title="Open in lightbox"
           >
             ↗

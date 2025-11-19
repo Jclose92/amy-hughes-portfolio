@@ -117,8 +117,9 @@ export default function Home() {
       .catch(err => console.error('Error loading resume:', err))
   }, [])
 
-  // Auto-scale bio text to fit container
+  // Auto-scale bio text to fit container (desktop only)
   useEffect(() => {
+    if (isMobile) return // Skip this effect on mobile
     if (!bioText || !bioContainerRef.current || !bioContentRef.current) return
 
     const container = bioContainerRef.current
@@ -190,7 +191,7 @@ export default function Home() {
     
     content.innerHTML = finalHtml
     setBioHtml(finalHtml)
-  }, [bioText])
+  }, [bioText, isMobile])
 
   // Hide loading screen once bio is rendered
   useEffect(() => {
