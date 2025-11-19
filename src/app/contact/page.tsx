@@ -56,37 +56,7 @@ export default function Contact() {
     <Navigation />
     <main style={{ flex: 1, padding: '3rem', maxWidth: '1400px', margin: '0 auto', width: '100%' }}>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 2px 1fr', gap: '4rem' }}>
-        {/* Contact Form Section - Left Side */}
-        <div style={{ marginTop: 'calc(3rem - 8px)' }}>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Name"
-                required
-                style={{ fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif', height: 'calc(3rem - 8px)' }}
-              />
-            </div>
-
-            <div className="form-group">
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Email"
-                required
-                style={{ fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif', height: 'calc(3rem - 8px)' }}
-              />
-            </div>
-
-            <div className="form-group">
-              <textarea
+        {/* Representation Section - Left Side */}
                 id="note"
                 name="note"
                 value={formData.note}
@@ -186,8 +156,8 @@ export default function Contact() {
               <Image 
                 src="/images/british-american-talent-logo-light-theme.png" 
                 alt="British American Talent" 
-                width={224}
-                height={112}
+                width={180}
+                height={90}
                 style={{ 
                   objectFit: 'contain',
                   filter: 'brightness(0) saturate(100%) invert(54%) sepia(18%) saturate(1247%) hue-rotate(353deg) brightness(91%) contrast(87%)',
@@ -224,8 +194,8 @@ export default function Contact() {
               <Image 
                 src="/images/volcanic-logo-light-theme.png" 
                 alt="Volcanic Talent" 
-                width={320}
-                height={160}
+                width={240}
+                height={120}
                 style={{ 
                   objectFit: 'contain',
                   filter: 'brightness(0) saturate(100%) invert(54%) sepia(18%) saturate(1247%) hue-rotate(353deg) brightness(91%) contrast(87%)',
@@ -235,6 +205,97 @@ export default function Contact() {
               />
             </div>
           </div>
+        </div>
+
+        {/* Divider */}
+        <div style={{ 
+          width: '2px', 
+          height: '100%', 
+          backgroundColor: '#C28950',
+          minHeight: '500px'
+        }}></div>
+
+        {/* Contact Form Section - Right Side */}
+        <div style={{ marginTop: 'calc(3rem - 8px)' }}>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Name"
+                required
+                style={{ fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif', height: 'calc(3rem - 8px)' }}
+              />
+            </div>
+
+            <div className="form-group">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Email"
+                required
+                style={{ fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif', height: 'calc(3rem - 8px)' }}
+              />
+            </div>
+
+            <div className="form-group">
+              <textarea
+                id="note"
+                name="note"
+                value={formData.note}
+                onChange={handleChange}
+                placeholder="Message to Amy"
+                rows={8}
+                required
+                style={{ fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif' }}
+              />
+            </div>
+
+            <button 
+              type="submit" 
+              disabled={isSubmitting}
+              style={{ 
+                padding: '0.6rem 2.4rem', 
+                fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif', 
+                marginTop: '-95px', 
+                fontSize: '60%',
+                opacity: isSubmitting ? 0.6 : 1,
+                cursor: isSubmitting ? 'not-allowed' : 'pointer'
+              }}
+            >
+              {isSubmitting ? 'Sending...' : 'Send'}
+            </button>
+
+            {/* Success Message */}
+            {submitStatus === 'success' && (
+              <p style={{ 
+                color: '#4CAF50', 
+                marginTop: '1rem', 
+                fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
+                fontSize: '1.2rem'
+              }}>
+                ✓ Message sent successfully!
+              </p>
+            )}
+
+            {/* Error Message */}
+            {submitStatus === 'error' && (
+              <p style={{ 
+                color: '#f44336', 
+                marginTop: '1rem', 
+                fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
+                fontSize: '1.2rem'
+              }}>
+                Failed to send message. Please try again.
+              </p>
+            )}
+          </form>
         </div>
       </div>
     </main>

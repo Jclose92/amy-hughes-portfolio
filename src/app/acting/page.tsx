@@ -50,6 +50,7 @@ export default function Acting() {
   const voiceworkRef = useRef<HTMLDivElement>(null)
   const comedyRef = useRef<HTMLDivElement>(null)
   const stageRef = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
 
   const openLightbox = (item: MediaItem, gallery: MediaItem[], stopInlineVideo?: () => void) => {
     const index = gallery.findIndex(g => g.id === item.id)
@@ -104,6 +105,19 @@ export default function Acting() {
 
     // Load screen gallery immediately (it's first on page)
     setVisibleSections(prev => ({ ...prev, screen: true }))
+  }, [])
+
+  // Track viewport width for mobile-specific layout
+  useEffect(() => {
+    const updateIsMobile = () => {
+      if (typeof window !== 'undefined') {
+        setIsMobile(window.innerWidth <= 768)
+      }
+    }
+
+    updateIsMobile()
+    window.addEventListener('resize', updateIsMobile)
+    return () => window.removeEventListener('resize', updateIsMobile)
   }, [])
 
   // Progressive loading: Load galleries when they become visible
@@ -270,8 +284,8 @@ export default function Acting() {
       </div>
       <div style={{ 
         display: 'grid', 
-        gridTemplateColumns: '1fr 2px 1fr', 
-        gap: '3rem',
+        gridTemplateColumns: isMobile ? '1fr' : '1fr 2px 1fr', 
+        gap: isMobile ? '2rem' : '3rem',
         alignItems: 'start'
       }}>
         {/* Showreels Section */}
@@ -328,13 +342,15 @@ export default function Acting() {
           )}
         </div>
 
-        {/* Divider */}
-        <div style={{ 
-          width: '2px', 
-          height: '100%', 
-          backgroundColor: '#C28950',
-          minHeight: '500px'
-        }}></div>
+        {/* Divider (hidden on mobile) */}
+        {!isMobile && (
+          <div style={{ 
+            width: '2px', 
+            height: '100%', 
+            backgroundColor: '#C28950',
+            minHeight: '500px'
+          }}></div>
+        )}
 
         {/* Voice Demos Section */}
         <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>

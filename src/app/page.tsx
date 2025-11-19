@@ -38,6 +38,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
   const bioContainerRef = useRef<HTMLDivElement>(null)
   const bioContentRef = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,6 +48,19 @@ export default function Home() {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Track viewport width for mobile-specific layout
+  useEffect(() => {
+    const updateIsMobile = () => {
+      if (typeof window !== 'undefined') {
+        setIsMobile(window.innerWidth <= 768)
+      }
+    }
+
+    updateIsMobile()
+    window.addEventListener('resize', updateIsMobile)
+    return () => window.removeEventListener('resize', updateIsMobile)
   }, [])
 
   useEffect(() => {
@@ -274,152 +288,227 @@ export default function Home() {
       </nav>
 
       {/* Hero Section with Headshot */}
-      <section style={{ 
-        position: 'relative', 
-        width: '100vw', 
-        height: '100vh',
-        overflow: 'hidden',
-        marginTop: '5rem'
-      }}>
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 83.33%, rgba(0,0,0,0) 100%)',
-          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 83.33%, rgba(0,0,0,0) 100%)'
-        }}>
-          <Image
-            src="https://drive.google.com/uc?export=download&id=1CGxVQFEhbMPp4vGV_VAG-qMgGtyg0upI"
-            alt="Amy Hughes - Professional Headshot"
-            fill
-            style={{ objectFit: 'cover' }}
-            priority
-          />
-        </div>
-        
-        {/* Text Overlays */}
-        <div style={{
-          position: 'absolute',
-          top: 'calc(2rem - 15px)',
-          left: '2rem',
-          color: '#FFFFFF',
-          fontFamily: 'Saonara, serif',
-          fontSize: '8.95rem',
-          zIndex: 10,
-          textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)'
-        }}>
-          Amy Hughes
-        </div>
-        
-        <div style={{
-          position: 'absolute',
-          bottom: 'calc(2rem + 90px)',
-          left: 'calc(2rem + 300px)',
-          color: '#FFFFFF',
-          fontFamily: 'Saonara, serif',
-          fontSize: '3.48rem',
-          lineHeight: '0.84',
-          zIndex: 10,
-          textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)',
-          textAlign: 'right'
-        }}>
-          Actor, Comedian, and<br />
-          Voiceover Artist
-        </div>
-
-        {/* Bio Text - Right Side */}
-        {bioText && (
-          <div
-            ref={bioContainerRef}
-            style={{
-              position: 'absolute',
-              top: 'calc(2rem + 8.95rem / 2 - 60px + 20px + 15px)',
-              bottom: 'calc(2rem + 90px + 3.48rem + 1rem + 30px - 20px)',
-              right: 'calc(2rem + 90px)',
-              width: '720px',
-              color: '#FFFFFF',
-              fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
-              lineHeight: '1.3',
-              zIndex: 10,
-              textShadow: '1px 1px 4px rgba(0, 0, 0, 0.8)',
-              textAlign: 'left',
-              display: 'flex',
-              alignItems: 'flex-start',
-              justifyContent: 'center',
-              flexDirection: 'column',
-              overflow: 'hidden'
-            }}>
-            <div
-              ref={bioContentRef}
-              style={{
-                width: '100%'
-              }} 
-              dangerouslySetInnerHTML={{
-                __html: bioHtml || (bioText ? (() => {
-                  const lines = bioText.trim().split(/\r?\n/)
-                  const htmlParts = []
-                  
-                  for (let i = 0; i < lines.length; i++) {
-                    const line = lines[i].trim()
-                    if (line) {
-                      htmlParts.push(`<p style="margin: 0; line-height: 1.2;">${line}</p>`)
-                    } else {
-                      htmlParts.push(`<p style="margin: 0; line-height: 1.2;">&nbsp;</p>`)
-                    }
-                  }
-                  
-                  return htmlParts.join('')
-                })() : '<p style="color: #FFFFFF;">Loading bio...</p>')
-              }} 
+      {isMobile ? (
+        <section style={{ marginTop: '5rem', padding: '1.5rem 1.5rem 0' }}>
+          <div style={{
+            position: 'relative',
+            width: '100%',
+            height: '60vh',
+            borderRadius: '8px',
+            overflow: 'hidden'
+          }}>
+            <Image
+              src="https://drive.google.com/uc?export=download&id=1CGxVQFEhbMPp4vGV_VAG-qMgGtyg0upI"
+              alt="Amy Hughes - Professional Headshot"
+              fill
+              style={{ objectFit: 'cover' }}
+              priority
             />
           </div>
-        )}
 
-        {/* Reach Out Button */}
-        <a
-          href="/contact"
-          style={{
+          {/* Name and Tagline */}
+          <div style={{
+            marginTop: '1.5rem',
+            color: '#FFFFFF',
+            fontFamily: 'Saonara, serif',
+            textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)'
+          }}>
+            <div style={{ fontSize: '4rem', marginBottom: '0.75rem' }}>Amy Hughes</div>
+            <div style={{ fontSize: '2.4rem', lineHeight: 1.1 }}>
+              Actor, Comedian, and
+              <br />
+              Voiceover Artist
+            </div>
+          </div>
+
+          {/* Bio Text - stacked block */}
+          {bioText && (
+            <div
+              style={{
+                marginTop: '1.75rem',
+                color: '#FFFFFF',
+                fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
+                lineHeight: 1.4,
+                textShadow: '1px 1px 4px rgba(0, 0, 0, 0.8)'
+              }}
+            >
+              {bioText.trim().split(/\r?\n/).map((line, idx) => (
+                <p key={idx} style={{ margin: 0, marginBottom: line ? '0.6rem' : '0.3rem' }}>
+                  {line || '\u00A0'}
+                </p>
+              ))}
+            </div>
+          )}
+
+          {/* Reach Out Button */}
+          <div style={{ marginTop: '2rem', marginBottom: '1rem' }}>
+            <a
+              href="/contact"
+              style={{
+                padding: '0.72rem 1.8rem',
+                backgroundColor: '#C28950',
+                color: '#FFFFFF',
+                fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
+                fontSize: '1.8rem',
+                textDecoration: 'none',
+                borderRadius: '8px',
+                border: '2px solid #C28950',
+                cursor: 'pointer',
+                textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)'
+              }}
+            >
+              Reach Out
+            </a>
+          </div>
+        </section>
+      ) : (
+        <section style={{ 
+          position: 'relative', 
+          width: '100vw', 
+          height: '100vh',
+          overflow: 'hidden',
+          marginTop: '5rem'
+        }}>
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 83.33%, rgba(0,0,0,0) 100%)',
+            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 83.33%, rgba(0,0,0,0) 100%)'
+          }}>
+            <Image
+              src="https://drive.google.com/uc?export=download&id=1CGxVQFEhbMPp4vGV_VAG-qMgGtyg0upI"
+              alt="Amy Hughes - Professional Headshot"
+              fill
+              style={{ objectFit: 'cover' }}
+              priority
+            />
+          </div>
+          
+          {/* Text Overlays */}
+          <div style={{
+            position: 'absolute',
+            top: 'calc(2rem - 15px)',
+            left: '2rem',
+            color: '#FFFFFF',
+            fontFamily: 'Saonara, serif',
+            fontSize: '8.95rem',
+            zIndex: 10,
+            textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)'
+          }}>
+            Amy Hughes
+          </div>
+          
+          <div style={{
             position: 'absolute',
             bottom: 'calc(2rem + 90px)',
-            right: 'calc(2rem + 90px)',
-            padding: '0.72rem 1.8rem',
-            backgroundColor: '#C28950',
+            left: 'calc(2rem + 300px)',
             color: '#FFFFFF',
-            fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
-            fontSize: '1.685rem',
-            textDecoration: 'none',
-            borderRadius: '8px',
+            fontFamily: 'Saonara, serif',
+            fontSize: '3.48rem',
+            lineHeight: '0.84',
             zIndex: 10,
-            transition: 'all 0.3s ease',
-            border: '2px solid #C28950',
-            cursor: 'pointer',
-            textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = 'transparent'
-            e.currentTarget.style.color = '#C28950'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = '#C28950'
-            e.currentTarget.style.color = '#FFFFFF'
-          }}
-        >
-          Reach Out
-        </a>
-      </section>
+            textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)',
+            textAlign: 'right'
+          }}>
+            Actor, Comedian, and<br />
+            Voiceover Artist
+          </div>
+
+          {/* Bio Text - Right Side */}
+          {bioText && (
+            <div
+              ref={bioContainerRef}
+              style={{
+                position: 'absolute',
+                top: 'calc(2rem + 8.95rem / 2 - 60px + 20px + 15px)',
+                bottom: 'calc(2rem + 90px + 3.48rem + 1rem + 30px - 20px)',
+                right: 'calc(2rem + 90px)',
+                width: '720px',
+                color: '#FFFFFF',
+                fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
+                lineHeight: '1.3',
+                zIndex: 10,
+                textShadow: '1px 1px 4px rgba(0, 0, 0, 0.8)',
+                textAlign: 'left',
+                display: 'flex',
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+                flexDirection: 'column',
+                overflow: 'hidden'
+              }}>
+              <div
+                ref={bioContentRef}
+                style={{
+                  width: '100%'
+                }} 
+                dangerouslySetInnerHTML={{
+                  __html: bioHtml || (bioText ? (() => {
+                    const lines = bioText.trim().split(/\r?\n/)
+                    const htmlParts = []
+                    
+                    for (let i = 0; i < lines.length; i++) {
+                      const line = lines[i].trim()
+                      if (line) {
+                        htmlParts.push(`<p style="margin: 0; line-height: 1.2;">${line}</p>`)
+                      } else {
+                        htmlParts.push(`<p style="margin: 0; line-height: 1.2;">&nbsp;</p>`)
+                      }
+                    }
+                    
+                    return htmlParts.join('')
+                  })() : '<p style="color: #FFFFFF;">Loading bio...</p>')
+                }} 
+              />
+            </div>
+          )}
+
+          {/* Reach Out Button */}
+          <a
+            href="/contact"
+            style={{
+              position: 'absolute',
+              bottom: 'calc(2rem + 90px)',
+              right: 'calc(2rem + 90px)',
+              padding: '0.72rem 1.8rem',
+              backgroundColor: '#C28950',
+              color: '#FFFFFF',
+              fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
+              fontSize: '1.685rem',
+              textDecoration: 'none',
+              borderRadius: '8px',
+              zIndex: 10,
+              transition: 'all 0.3s ease',
+              border: '2px solid #C28950',
+              cursor: 'pointer',
+              textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent'
+              e.currentTarget.style.color = '#C28950'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#C28950'
+              e.currentTarget.style.color = '#FFFFFF'
+            }}
+          >
+            Reach Out
+          </a>
+        </section>
+      )}
 
       {/* Content Section */}
       <div style={{ 
         padding: '4rem 2rem'
       }}>
-        {/* Showreel and Voice Demos Section - Split Layout */}
+        {/* Showreel and Voice Demos Section - Split Layout (stacks on mobile) */}
         <section style={{ marginBottom: '6rem', maxWidth: '1400px', margin: '0 auto 6rem' }}>
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: '1fr 2px 1fr', 
-            gap: '3rem',
+            gridTemplateColumns: isMobile ? '1fr' : '1fr 2px 1fr', 
+            gap: isMobile ? '2rem' : '3rem',
             alignItems: 'start'
           }}>
             {/* Showreel Section - Left */}
@@ -470,13 +559,15 @@ export default function Home() {
               )}
             </div>
 
-            {/* Divider */}
-            <div style={{ 
-              width: '2px', 
-              height: '100%', 
-              backgroundColor: '#C28950',
-              minHeight: '500px'
-            }}></div>
+            {/* Divider (hidden on mobile) */}
+            {!isMobile && (
+              <div style={{ 
+                width: '2px', 
+                height: '100%', 
+                backgroundColor: '#C28950',
+                minHeight: '500px'
+              }}></div>
+            )}
 
             {/* Voice Demos Section - Right */}
             <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -504,14 +595,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Resumé and Latest Shows Section */}
+        {/* Resumé and Latest Shows Section (stacks on mobile) */}
         <section style={{ 
           marginBottom: '4rem', 
           maxWidth: '1400px', 
           margin: '0 auto 4rem',
           display: 'grid',
-          gridTemplateColumns: '1fr 2px 1fr',
-          gap: '3rem',
+          gridTemplateColumns: isMobile ? '1fr' : '1fr 2px 1fr',
+          gap: isMobile ? '2rem' : '3rem',
           alignItems: 'start'
         }}>
           {/* Resumé Section - Left */}
@@ -562,13 +653,15 @@ export default function Home() {
             )}
           </div>
 
-          {/* Divider */}
-          <div style={{ 
-            width: '2px', 
-            height: '100%', 
-            backgroundColor: '#C28950',
-            minHeight: '500px'
-          }}></div>
+          {/* Divider (hidden on mobile) */}
+          {!isMobile && (
+            <div style={{ 
+              width: '2px', 
+              height: '100%', 
+              backgroundColor: '#C28950',
+              minHeight: '500px'
+            }}></div>
+          )}
 
           {/* Latest Shows Section - Right */}
           <div style={{ 

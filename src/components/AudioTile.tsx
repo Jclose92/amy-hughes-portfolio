@@ -124,11 +124,11 @@ export default function AudioTile({ url, title, description, onPlay, onLightboxC
 
       {/* Title and Description */}
       <div className="gallery-caption" style={{ width: '200px', maxWidth: '200px' }}>
-        <p className="gallery-title" style={{ fontSize: '1.44rem', color: '#FFFFFF' }}>
+        <p className="gallery-title">
           {title}
         </p>
         {description && (
-          <p className="gallery-description" style={{ fontSize: '1.08rem', color: '#FFFFFF' }}>
+          <p className="gallery-description">
             {description}
           </p>
         )}

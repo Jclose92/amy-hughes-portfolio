@@ -288,11 +288,11 @@ export default function InfiniteGallery({ items, onItemClick }: InfiniteGalleryP
               )}
             </div>
             <div className="gallery-caption" style={{ width: `${itemWidth}px`, maxWidth: `${itemWidth}px` }}>
-              <p className="gallery-title" style={{ fontSize: '1.44rem', color: '#FFFFFF' }}>
+              <p className="gallery-title">
                 {item.title}
               </p>
               {item.description && (
-                <p className="gallery-description" style={{ fontSize: '1.08rem', color: '#FFFFFF' }}>
+                <p className="gallery-description">
                   {item.description}
                 </p>
               )}

@@ -7,32 +7,32 @@ export default function Footer() {
         <Image 
           src="/images/Spotlight-Logo-light-theme.png" 
           alt="Spotlight" 
-          width={40}
-          height={40}
+          width={72}
+          height={72}
         />
       </a>
       <a href="https://www.imdb.com/name/nm4806670/" target="_blank" rel="noopener noreferrer">
         <Image 
           src="/images/imdb-logo-light-theme.png" 
           alt="IMDB" 
-          width={40}
-          height={40}
+          width={72}
+          height={72}
         />
       </a>
       <a href="https://www.instagram.com/amyhoo_?igsh=eGhkbmI2cmluNXkz&utm_source=qr" target="_blank" rel="noopener noreferrer">
         <Image 
           src="/images/instagram-logo-light-theme.png" 
           alt="Instagram" 
-          width={40}
-          height={40}
+          width={72}
+          height={72}
         />
       </a>
       <a href="https://volcanictalent.com/artists/amy-hughes" target="_blank" rel="noopener noreferrer">
         <Image 
           src="/images/Volcanic-logo-light-theme.png" 
           alt="Volcanic Talent" 
-          width={112}
-          height={112}
+          width={72}
+          height={72}
         />
       </a>
     </footer>

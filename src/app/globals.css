@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: 'Josefin Sans';
-  src: url('/fonts/JosefinSans-Regular.ttf') format('truetype');
+  src: url('/fonts/JosefinSans-Medium.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -99,16 +99,11 @@ footer {
 }
 
 footer img {
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
   filter: brightness(0) saturate(100%) invert(54%) sepia(18%) saturate(1247%) hue-rotate(353deg) brightness(91%) contrast(87%);
   transition: opacity 0.3s;
-}
-
-footer a:last-child img {
-  width: 160px;
-  height: 160px;
 }
 
 footer a:hover img {
@@ -495,6 +490,14 @@ audio {
 
   p {
     font-size: 1.8rem;
+  }
+
+  .gallery-title {
+    font-size: 1.4rem;
+  }
+
+  .gallery-description {
+    font-size: 1.05rem;
   }
 
   nav {
