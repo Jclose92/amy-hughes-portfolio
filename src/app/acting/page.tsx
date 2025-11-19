@@ -249,12 +249,12 @@ export default function Acting() {
       )}
 
       <Navigation />
-    <main style={{ 
-      flex: 1,
-      padding: '3rem', 
-      maxWidth: '1400px', 
-      margin: '0 auto',
-      width: '100%'
+    <div style={{ 
+      minHeight: '100vh',
+      padding: isMobile ? '6rem 0.75rem 2rem' : '8rem 3rem 3rem',
+      position: 'relative',
+      maxWidth: '1400px',
+      margin: '0 auto'
     }}>
       {/* SEO-optimized header - visually hidden but accessible to search engines */}
       <h1 style={{ 
@@ -607,7 +607,7 @@ export default function Acting() {
           </div>
         )}
       </div>
-    </main>
+    </div>
     <Footer />
     </MediaPlayerProvider>
   )

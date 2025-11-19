@@ -322,23 +322,25 @@ export default function Home() {
           </div>
 
           {/* Bio Text - stacked block */}
-          {bioText && (
-            <div
-              style={{
-                marginTop: '1.75rem',
-                color: '#FFFFFF',
-                fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
-                lineHeight: 1.4,
-                textShadow: '1px 1px 4px rgba(0, 0, 0, 0.8)'
-              }}
-            >
-              {bioText.trim().split(/\r?\n/).map((line, idx) => (
+          <div
+            style={{
+              marginTop: '1.75rem',
+              color: '#FFFFFF',
+              fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
+              lineHeight: 1.4,
+              textShadow: '1px 1px 4px rgba(0, 0, 0, 0.8)'
+            }}
+          >
+            {bioText ? (
+              bioText.trim().split(/\r?\n/).map((line, idx) => (
                 <p key={idx} style={{ margin: 0, marginBottom: line ? '0.6rem' : '0.3rem' }}>
                   {line || '\u00A0'}
                 </p>
-              ))}
-            </div>
-          )}
+              ))
+            ) : (
+              <p style={{ margin: 0 }}>Loading bio...</p>
+            )}
+          </div>
 
           {/* Reach Out Button */}
           <div style={{ marginTop: '2rem', marginBottom: '1rem' }}>

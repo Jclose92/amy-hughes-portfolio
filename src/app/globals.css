@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: 'Josefin Sans';
-  src: url('/fonts/JosefinSans-Medium.woff') format('woff');
+  src: url('/fonts/JosefinSans-Light_1.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -94,7 +94,7 @@ footer {
   border-top: 2px solid #A97142;
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 4rem;
   align-items: center;
 }
 
@@ -473,7 +473,7 @@ audio {
   }
 
   main {
-    padding: 1.5rem;
+    padding: 1rem 0.75rem;
   }
 
   h1 {
@@ -519,11 +519,6 @@ audio {
   footer img {
     width: 60px;
     height: 60px;
-  }
-
-  footer a:last-child img {
-    width: 120px;
-    height: 120px;
   }
 
   .gallery-grid {

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'https://amyhughes.ie',
+    url: 'https://amyhughesactor.com',
     siteName: 'Amy Hughes - Professional Actor & Performer',
     title: 'Amy Hughes - Irish Actress, Comedian & Voiceover Artist',
     description: 'Professional Dublin-based actress, comedian, improviser, and voiceover talent specializing in dark comedy, character work, and versatile vocal performances.',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     images: ['/opengraph-image']
   },
   alternates: {
-    canonical: 'https://amyhughes.ie'
+    canonical: 'https://amyhughesactor.com'
   },
   robots: {
     index: true,
@@ -77,7 +77,7 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Person',
               name: 'Amy Hughes',
-              url: 'https://amyhughes.ie',
+              url: 'https://amyhughesactor.com',
               jobTitle: ['Actress', 'Comedian', 'Voice Actor', 'Improviser'],
               description: 'Dublin-based actress, comedian, improviser, and voiceover artist specializing in dark comedy, character acting, and vocal performances.',
               address: {
