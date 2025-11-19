@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# Set environment variables in Vercel
+# Run this after installing Vercel CLI: npm i -g vercel
+
+vercel env add GOOGLE_SERVICE_ACCOUNT_EMAIL production <<EOF
+gallery-service@amy-portfolio-gallery.iam.gserviceaccount.com
+EOF
+
+vercel env add GOOGLE_PRIVATE_KEY production <<EOF
+-----BEGIN PRIVATE KEY-----
+MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDlXkqFOqDCV4HbYyG7J0Z42B3LsoaaPINWVaj1QzsmzuBhumQrsq5PYYTUq5n0XFKojJhDq2oF6lxWvTpOeHl5F71vtNAHRbog6UF+Na5EHhYO1Muz//VO+qdXgOVovkTrV/5/qaiY+Ws0yH23T2gCZifNXFWin2FERuRwEnXqAN+vLCVfC91OSdhbnshsGJd3DdeSq1+c+3U+OmrNmEIys2moXKDnBCyUjvS5QwbV3qOohUXeucCYTyD6Nyk5b1oSorlIkv4aKgsjNy4SaR+zk4sfZOow+6Fjez2PSagJDaTtu1jy8TRFuoBRULcHlYaRyk+kkTE7NwQOefQmlG9PAgMBAAECggEAXu+2PIrVu1ro/tt7PLG285HQU12jZPejDPsLoeif9SIvsYOqroOYrnaYukYExSXpeKYo5+ltSuGEMsrD9XLcJIj0+eWHLVto/PJPD2Q8qykgzCa74dcRvAz3crqBOed3M0oKpuCcTiT+gKxzjIorbMLHurJ7J4J8ifwl1VVuxNmq8Pay3BClJWuMfhX47QSoc7q3fTQlcvBcYqjPzYS/zE/X1wIdm3r4nGGqDSjGAsZl1DAzJkDyRdoL+awfsT8dHrzW8Mi8hfeT/6CeMqRFP1P6vzaa/7nNgzF+SsTOl235p58dmwaM/se7nlAw8IDu7uRn/quDzj/64t5i7450oQKBgQD9T/Mlzh5Qw4o8/+FKXnRzy08aROnR1Y8OBo3u5PjJgFjKDOSt1dGppkfXN7GsGytk1ExWGBCPvcTIsyO+qqwCoSzhOc2k82fqlYNQvxuhYNgwdznaAhTXlw7YypnPyFxKXA+Hs4KkVXTD7ZMVhiglCiD0JiOonfRNcg6vRBoLaQKBgQDnzU3p0Kd5WHpkvOdY6sOqVukLop74CMn47AMPCQahD19vZI/br10ETija0DsCeYCi3D50T6dki2BLEWA5YCwX/L0LBf9DTnhYd+pIULGM3FFyS755WdWU4gG8jYsBy0kipYUwEueRpMQZdhHu4tKmZ/BptyH0QozJWIOZw/tl9wKBgHaQfFt+nXvp+oNQtU+M5G7qg2zlQpf/oITNFpPxwmz2URjJbiPbh9YjSU7394Z59Rats8k8XEwbY8cY6istUXOtowcMei+x6jrHnn4l5TXk0Wvl8kMTZFQAlWdtdQ7nViNL8czvfb+TbCLkyUpyz8l+cywzyc77l8TEFRF+C765AoGAHdSr/DUf+FvMlH5C/4xm1dsNbrPk5WKsK16kHiE5OyzxSTKV2N2+iLlORKqbjXv5c/wIBYvirOvK3p5D1d5sjkG2Sl7hNNY6Ypg8DEZmMwx/ZsgcoR1QgTJ8qrlEdFym8tB+TWuBZZrgqa4qLKYAGe4yYEhzFC4kVB0SAo3YIo0CgYADwpgkDMR/uCLBGcL96gYe4jNDri3tpyMcYwiDH0vaPqrbVce84IxmqOUKzeb4VImSAYJYuAOkmdtHl0/EZEFBjvSWcXjhutWtqaQO800UsABCzjpSTk9M/1Gpkd3UMLUjfZVbiJiin/q9xEZsEqqvbiaRmd3/6uCfQlDfPMjeuw==
+-----END PRIVATE KEY-----
+EOF
+
+vercel env add GOOGLE_DRIVE_FOLDER_ID production <<EOF
+1lJo3S3SDcmURuRNXbUHY10hV7nbV6pI3
+EOF
+
+vercel env add GOOGLE_DRIVE_SCREEN_FOLDER_ID production <<EOF
+1-iuCaEDn6KoKjHFWDxmLjl_r1nKJDE4w
+EOF
+
+vercel env add GOOGLE_DRIVE_VOICEWORK_FOLDER_ID production <<EOF
+1QMWCHUEOi-DwNKeYcwL1ZwzUBl6gq2--
+EOF
+
+vercel env add GOOGLE_DRIVE_COMEDY_FOLDER_ID production <<EOF
+1nBqW6vfHusXgt_622eCKVy016dmC8SwP
+EOF
+
+vercel env add GOOGLE_DRIVE_STAGE_FOLDER_ID production <<EOF
+1mQm-aSFoRlF6OK3sK2zdtLkcibIOObDE
+EOF
+
+vercel env add GOOGLE_DRIVE_SHOWREELS_FOLDER_ID production <<EOF
+1sfIzBQ_wDcKLIbSkFs9VcA-d1ImxsPRd
+EOF
+
+vercel env add GOOGLE_DRIVE_VOICE_DEMOS_FOLDER_ID production <<EOF
+1BVzUdwQBYlvFRYdgz-qNk8EQSFFV-H9q
+EOF
+
+vercel env add LINKPREVIEW_API_KEY production <<EOF
+63f1a3bca589b8fef7e4d69005d64dee
+EOF
+
+vercel env add GOOGLE_DRIVE_SHOWS_FILE_ID production <<EOF
+1_9s2u-7wyLTH10HVkw_NNzyGhTh6DHyM
+EOF
+
+vercel env add GOOGLE_DRIVE_BIO_FILE_ID production <<EOF
+1YppVkj-2tIIY41z3Tad3de8kBf7qLoXg
+EOF
+
+vercel env add GOOGLE_DRIVE_RESUME_FILE_ID production <<EOF
+1Eeh1iGgQNr4uQIuPR6RJ_6EUT3SsPjVYb53PryylaE4
+EOF
+
+vercel env add RESEND_API_KEY production <<EOF
+re_W6JMyQr3_PGi7by1m1hqQRVzgoJVR42kg
+EOF
+
+echo "✅ All environment variables added to Vercel production!"
+echo "Run the same commands with 'preview' and 'development' if needed."

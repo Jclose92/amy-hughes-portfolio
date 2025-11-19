@@ -5,7 +5,7 @@ export default function Footer() {
     <footer>
       <a href="https://app.spotlight.com/1711-3423-8112" target="_blank" rel="noopener noreferrer">
         <Image 
-          src="/images/spotlight-logo-light-theme.png" 
+          src="/images/Spotlight-Logo-light-theme.png" 
           alt="Spotlight" 
           width={40}
           height={40}
@@ -29,7 +29,7 @@ export default function Footer() {
       </a>
       <a href="https://volcanictalent.com/artists/amy-hughes" target="_blank" rel="noopener noreferrer">
         <Image 
-          src="/images/volcanic-logo-light-theme.png" 
+          src="/images/Volcanic-logo-light-theme.png" 
           alt="Volcanic Talent" 
           width={112}
           height={112}

@@ -14,6 +14,15 @@ export async function POST(request: Request) {
       )
     }
 
+    // Check if contact recipient email is configured
+    if (!process.env.CONTACT_RECIPIENT_EMAIL) {
+      console.error('CONTACT_RECIPIENT_EMAIL is not set')
+      return NextResponse.json(
+        { error: 'Contact recipient not configured' },
+        { status: 500 }
+      )
+    }
+
     const { name, email, note } = await request.json()
 
     // Validate required fields
@@ -28,7 +37,7 @@ export async function POST(request: Request) {
     console.log('Attempting to send email...')
     const { data, error } = await resend.emails.send({
       from: 'Amy Hughes Portfolio <onboarding@resend.dev>',
-      to: 'johnalclose@gmail.com', // TODO: Change to hughesamyv@gmail.com after domain verification
+      to: process.env.CONTACT_RECIPIENT_EMAIL,
       replyTo: email,
       subject: `New message from ${name} - Portfolio Contact Form`,
       html: `
