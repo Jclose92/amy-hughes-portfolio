@@ -296,7 +296,7 @@ function ActingContent() {
         width: '100%'
       }}>
         {/* Showreels Section */}
-        <div style={{ width: '100%', overflow: 'hidden' }}>
+        <div style={{ width: '100%', overflow: 'hidden', boxSizing: 'border-box' }}>
           <h2 style={{ 
             fontSize: '4rem', 
             marginBottom: '2rem',
@@ -309,9 +309,9 @@ function ActingContent() {
           ) : showreels.length === 0 ? (
             <p style={{ color: '#FFFFFF' }}>No showreels available.</p>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', width: '100%' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', width: '100%', boxSizing: 'border-box' }}>
               {showreels.map((reel, index) => (
-                <div key={reel.id} style={{ width: '100%', maxWidth: isMobile ? '100%' : '500px' }}>
+                <div key={reel.id} style={{ width: '100%', maxWidth: isMobile ? '100%' : '500px', boxSizing: 'border-box' }}>
                   {reel.title && (
                     <h3 style={{
                       color: '#FFFFFF',
@@ -364,7 +364,7 @@ function ActingContent() {
         )}
 
         {/* Voice Demos Section */}
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', overflow: 'hidden' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', overflow: 'hidden', boxSizing: 'border-box' }}>
           <h2 style={{ 
             fontSize: '4rem', 
             marginBottom: '2rem',
@@ -382,7 +382,8 @@ function ActingContent() {
               display: 'flex',
               flexDirection: 'column',
               gap: '1.5rem',
-              width: '100%'
+              width: '100%',
+              boxSizing: 'border-box'
             }}>
               {voiceDemos.map((demo) => (
                 <VoiceDemo key={demo.id} demo={demo} />

@@ -50,22 +50,23 @@ export default function VoiceDemo({ demo }: VoiceDemoProps) {
   }, [mediaPlayer, demo.id])
 
   return (
-    <div key={demo.id} style={{ maxWidth: isMobile ? '100%' : '500px', width: '100%', overflow: 'hidden' }}>
+    <div key={demo.id} style={{ maxWidth: isMobile ? '100%' : '500px', width: '100%', overflow: 'hidden', boxSizing: 'border-box' }}>
       <h3 style={{
         color: '#FFFFFF',
         marginBottom: '0.5rem',
         fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
-        fontSize: '2rem'
+        fontSize: '2rem',
+        boxSizing: 'border-box'
       }}>{demo.title}</h3>
       <div style={{
         padding: '1rem',
         background: '#1a1a1a',
         border: '2px solid #C28950',
         borderRadius: '8px',
-        maxWidth: '100%',
+        width: '100%',
         boxSizing: 'border-box'
       }}>
-        <audio ref={audioRef} controls style={{ width: '100%', maxWidth: '100%' }}>
+        <audio ref={audioRef} controls style={{ width: '100%', maxWidth: '100%', boxSizing: 'border-box' }}>
           <source src={demo.url} type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
