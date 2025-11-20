@@ -6,7 +6,8 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import InfiniteGallery from '@/components/InfiniteGallery'
 import AudioGallery from '@/components/AudioGallery'
-import { MediaPlayerProvider } from '@/contexts/MediaPlayerContext'
+import AudioTile from '@/components/AudioTile'
+import { MediaPlayerProvider, useMediaPlayer } from '@/contexts/MediaPlayerContext'
 import VoiceDemo from '@/components/VoiceDemo'
 
 interface MediaItem {
@@ -26,7 +27,8 @@ interface GalleryState {
   loading: boolean
 }
 
-export default function Acting() {
+function ActingContent() {
+  const mediaPlayer = useMediaPlayer()
   const [showreels, setShowreels] = useState<MediaItem[]>([])
   const [voiceDemos, setVoiceDemos] = useState<MediaItem[]>([])
   const [screenGallery, setScreenGallery] = useState<GalleryState>({ items: [], loading: true })
@@ -53,6 +55,9 @@ export default function Acting() {
   const [isMobile, setIsMobile] = useState(false)
 
   const openLightbox = (item: MediaItem, gallery: MediaItem[], stopInlineVideo?: () => void) => {
+    // Pause all currently playing media
+    mediaPlayer.pauseAll()
+    
     const index = gallery.findIndex(g => g.id === item.id)
     setLightboxGallery(gallery)
     setLightboxIndex(index)
@@ -213,7 +218,7 @@ export default function Acting() {
 
 
   return (
-    <MediaPlayerProvider>
+    <>
       {/* Loading Screen */}
       {isLoading && (
         <div style={{
@@ -317,14 +322,18 @@ export default function Acting() {
                     position: 'relative',
                     width: '100%',
                     maxWidth: isMobile ? '100%' : '500px',
-                    aspectRatio: '16 / 9',
-                    height: 'auto'
+                    paddingBottom: '56.25%',
+                    height: 0,
+                    overflow: 'hidden'
                   }}>
                     <iframe
                       src={`https://drive.google.com/file/d/${reel.id}/preview`}
                       allow="autoplay"
                       title={reel.title || `Showreel ${index + 1}`}
                       style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
                         width: '100%',
                         height: '100%',
                         border: '2px solid #C28950',
@@ -588,7 +597,7 @@ export default function Acting() {
               <div style={{ marginTop: '1rem', padding: '0 2rem' }}>
                 <p style={{ 
                   color: '#C28950', 
-                  fontSize: '2.5rem', 
+                  fontSize: '1.8rem', 
                   fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
                   marginBottom: '0.5rem'
                 }}>
@@ -597,11 +606,12 @@ export default function Acting() {
                 {lightboxImage.description && (
                   <p style={{ 
                     color: '#FFFFFF', 
-                    fontSize: '1.5rem', 
+                    fontSize: '1.2rem', 
                     fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
                     opacity: 0.9,
                     maxWidth: '900px',
-                    margin: '0 auto'
+                    margin: '0 auto',
+                    lineHeight: '1.5'
                   }}>
                     {lightboxImage.description}
                   </p>
@@ -613,6 +623,14 @@ export default function Acting() {
       </div>
     </div>
     <Footer />
+    </>
+  )
+}
+
+export default function Acting() {
+  return (
+    <MediaPlayerProvider>
+      <ActingContent />
     </MediaPlayerProvider>
   )
 }

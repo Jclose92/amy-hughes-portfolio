@@ -591,117 +591,104 @@ export default function Home() {
             
             {isMobile ? (
               upcomingShows.length > 0 ? (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                 {upcomingShows.map((show, index) => (
-                  <a
-                    key={index}
-                    href={show.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'flex',
-                      gap: '1.5rem',
-                      textDecoration: 'none',
-                      cursor: 'pointer',
-                      transition: 'transform 0.2s',
-                      alignItems: 'flex-start'
-                    }}
-                    onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
-                    onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                  >
-                    {/* Show Image */}
-                    <div style={{
-                      width: '200px',
-                      height: '200px',
-                      flexShrink: 0,
-                      position: 'relative',
-                      overflow: 'hidden',
-                      borderRadius: '8px',
-                      border: '2px solid #C28950'
-                    }}>
-                      <Image
-                        src={show.image}
-                        alt={show.title}
-                        fill
-                        style={{ objectFit: 'cover' }}
-                        sizes="200px"
-                        unoptimized
-                        loading="lazy"
-                      />
-                    </div>
-
-                    {/* Show Details */}
-                    <div style={{ 
-                      flex: 1,
-                      height: '200px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      overflow: 'hidden'
-                    }}>
-                      {/* Title - single line with ellipsis */}
-                      <h3 style={{
-                        fontSize: '2.125rem',
-                        marginBottom: '0.3rem',
-                        fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
-                        color: '#C28950',
-                        lineHeight: '1.1',
+                  <div key={index}>
+                    <a
+                      href={show.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '1rem',
+                        textDecoration: 'none',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      {/* Show Image - Full Width on Top */}
+                      <div style={{
+                        width: '100%',
+                        height: '250px',
+                        position: 'relative',
                         overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        whiteSpace: 'nowrap'
-                      }}>{show.title}</h3>
-                      
-                      {/* Date and Location */}
-                      {(show.date || show.location) && (
-                        <div style={{ marginBottom: '0.5rem' }}>
-                          {show.date && (
-                            <p style={{
-                              fontSize: '1.3rem',
-                              color: '#FFFFFF',
-                              fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
-                              marginBottom: '0.2rem',
-                              lineHeight: '1.2',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
-                              whiteSpace: 'nowrap'
-                            }}>
-                              {show.date}
-                            </p>
-                          )}
-                          {show.location && (
-                            <p style={{
-                              fontSize: '1.3rem',
-                              color: '#FFFFFF',
-                              fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
-                              marginBottom: '0.2rem',
-                              lineHeight: '1.2',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
-                              whiteSpace: 'nowrap'
-                            }}>
-                              {show.location}
-                            </p>
-                          )}
-                        </div>
-                      )}
-                      
-                      {/* Description - limited lines with ellipsis */}
-                      {show.description && (
-                        <p style={{
-                          fontSize: '1.3rem',
-                          color: '#FFFFFF',
-                          fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
-                          lineHeight: '1.3',
-                          overflow: 'hidden',
-                          display: '-webkit-box',
-                          WebkitLineClamp: (show.date && show.location) ? 2 : (show.date || show.location) ? 3 : 4,
-                          WebkitBoxOrient: 'vertical',
-                          textOverflow: 'ellipsis'
-                        }}>
-                          {show.description}
-                        </p>
-                      )}
-                    </div>
-                  </a>
+                        borderRadius: '8px',
+                        border: '2px solid #C28950'
+                      }}>
+                        <Image
+                          src={show.image}
+                          alt={show.title}
+                          fill
+                          style={{ objectFit: 'cover' }}
+                          sizes="100vw"
+                          unoptimized
+                          loading="lazy"
+                        />
+                      </div>
+
+                      {/* Show Details - Below Image */}
+                      <div style={{ 
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '0.5rem'
+                      }}>
+                        {/* Title */}
+                        <h3 style={{
+                          fontSize: '2.125rem',
+                          fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
+                          color: '#C28950',
+                          lineHeight: '1.1',
+                          margin: 0
+                        }}>{show.title}</h3>
+                        
+                        {/* Date and Location */}
+                        {show.date && (
+                          <p style={{
+                            fontSize: '1.3rem',
+                            color: '#FFFFFF',
+                            fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
+                            margin: 0,
+                            lineHeight: '1.3'
+                          }}>
+                            {show.date}
+                          </p>
+                        )}
+                        {show.location && (
+                          <p style={{
+                            fontSize: '1.3rem',
+                            color: '#FFFFFF',
+                            fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
+                            margin: 0,
+                            lineHeight: '1.3'
+                          }}>
+                            {show.location}
+                          </p>
+                        )}
+                        
+                        {/* Description */}
+                        {show.description && (
+                          <p style={{
+                            fontSize: '1.3rem',
+                            color: '#FFFFFF',
+                            fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
+                            lineHeight: '1.4',
+                            margin: 0
+                          }}>
+                            {show.description}
+                          </p>
+                        )}
+                      </div>
+                    </a>
+                    {/* Bronze separator line (except after last item) */}
+                    {index < upcomingShows.length - 1 && (
+                      <div style={{
+                        width: '100%',
+                        height: '2px',
+                        backgroundColor: '#C28950',
+                        marginTop: '2rem'
+                      }} />
+                    )}
+                  </div>
                 ))}
               </div>
               ) : (
