@@ -505,14 +505,18 @@ export default function Home() {
                     position: 'relative',
                     width: '100%',
                     maxWidth: '100%',
-                    aspectRatio: '16 / 9',
-                    height: 'auto'
+                    paddingBottom: '56.25%',
+                    height: 0,
+                    overflow: 'hidden'
                   }}>
                     <iframe
                       src={`https://drive.google.com/file/d/${latestShowreel.id}/preview`}
                       allow="autoplay"
                       title={latestShowreel.title || 'Showreel'}
                       style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
                         width: '100%',
                         height: '100%',
                         border: '2px solid #C28950',
