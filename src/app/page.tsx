@@ -290,51 +290,55 @@ export default function Home() {
 
       {/* Hero Section with Headshot */}
       {isMobile ? (
-        <section style={{ marginTop: '5rem', padding: '1.5rem 1.5rem 0' }}>
+        <section style={{ marginTop: '5rem', padding: '0' }}>
           <div style={{
             position: 'relative',
             width: '100%',
             height: '60vh',
-            borderRadius: '8px',
             overflow: 'hidden'
           }}>
             <Image
               src="https://drive.google.com/uc?export=download&id=1CGxVQFEhbMPp4vGV_VAG-qMgGtyg0upI"
               alt="Amy Hughes - Professional Headshot"
               fill
-              style={{ objectFit: 'cover' }}
+              style={{ objectFit: 'cover', objectPosition: 'left center' }}
               priority
             />
-          </div>
-
-          {/* Name and Tagline */}
-          <div style={{
-            marginTop: '1.5rem',
-            color: '#FFFFFF',
-            fontFamily: 'Saonara, serif',
-            textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)'
-          }}>
-            <div style={{ fontSize: '4rem', marginBottom: '0.75rem' }}>Amy Hughes</div>
-            <div style={{ fontSize: '2.4rem', lineHeight: 1.1 }}>
-              Actor, Comedian, and
-              <br />
-              Voiceover Artist
+            
+            {/* Name and Tagline - Overlaid on image */}
+            <div style={{
+              position: 'absolute',
+              bottom: '2rem',
+              left: '1.5rem',
+              right: '1.5rem',
+              color: '#FFFFFF',
+              fontFamily: 'Saonara, serif',
+              textShadow: '3px 3px 10px rgba(0, 0, 0, 0.9)'
+            }}>
+              <div style={{ fontSize: '4rem', marginBottom: '0.5rem' }}>Amy Hughes</div>
+              <div style={{ fontSize: '2.4rem', lineHeight: 1.1 }}>
+                Actor, Comedian, and
+                <br />
+                Voiceover Artist
+              </div>
             </div>
           </div>
 
-          {/* Bio Text - stacked block */}
+          {/* Bio Text - below image, half size */}
           <div
             style={{
-              marginTop: '1.75rem',
+              marginTop: '1.5rem',
+              padding: '0 1.5rem',
               color: '#FFFFFF',
               fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
+              fontSize: '0.9rem',
               lineHeight: 1.4,
               textShadow: '1px 1px 4px rgba(0, 0, 0, 0.8)'
             }}
           >
             {bioText ? (
               bioText.trim().split(/\r?\n/).map((line, idx) => (
-                <p key={idx} style={{ margin: 0, marginBottom: line ? '0.6rem' : '0.3rem' }}>
+                <p key={idx} style={{ margin: 0, marginBottom: line ? '0.5rem' : '0.25rem', fontSize: '0.9rem' }}>
                   {line || '\u00A0'}
                 </p>
               ))
@@ -344,7 +348,7 @@ export default function Home() {
           </div>
 
           {/* Reach Out Button */}
-          <div style={{ marginTop: '2rem', marginBottom: '1rem' }}>
+          <div style={{ marginTop: '2rem', marginBottom: '1rem', padding: '0 1.5rem' }}>
             <a
               href="/contact"
               style={{

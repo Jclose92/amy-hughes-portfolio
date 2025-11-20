@@ -88,7 +88,8 @@ export default function InfiniteGallery({ items, onItemClick }: InfiniteGalleryP
     if (scrollRef.current && items.length > 0) {
       const avgItemWidth = 278
       const sectionWidth = avgItemWidth * items.length
-      scrollRef.current.scrollLeft = sectionWidth
+      // Start at middle section but offset to show first tile fully
+      scrollRef.current.scrollLeft = sectionWidth + 50
     }
   }, [items])
 

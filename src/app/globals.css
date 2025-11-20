@@ -542,4 +542,11 @@ audio {
   .contact-form {
     margin: 1.5rem auto;
   }
+
+  input, textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    font-size: 1.35rem !important;
+  }
 }

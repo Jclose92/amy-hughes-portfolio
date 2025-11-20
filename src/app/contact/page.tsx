@@ -167,7 +167,7 @@ export default function Contact() {
           {/* Representation Section - Right on desktop, first on mobile */}
           <div>
           <h2 style={{ 
-            fontSize: '4rem', 
+            fontSize: isMobile ? '3rem' : '4rem', 
             marginBottom: '2rem',
             fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
             color: '#C28950',
@@ -179,26 +179,26 @@ export default function Contact() {
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem' }}>
               <div>
                 <h3 style={{ 
-                  fontSize: '2.55rem', 
+                  fontSize: isMobile ? '1.9rem' : '2.55rem', 
                   marginBottom: '0.3rem',
                   fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
                   textTransform: 'uppercase',
                   color: '#FFFFFF',
                   marginTop: 'calc(3rem - 38px)'
                 }}>Acting</h3>
-                <p style={{ margin: '0.13rem 0', fontSize: '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>Zach Copeland</p>
-                <p style={{ margin: '0.13rem 0', fontSize: '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>British American Talent</p>
-                <p style={{ margin: '0.13rem 0', fontSize: '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>
+                <p style={{ margin: '0.13rem 0', fontSize: isMobile ? '1.4rem' : '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>Zach Copeland</p>
+                <p style={{ margin: '0.13rem 0', fontSize: isMobile ? '1.4rem' : '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>British American Talent</p>
+                <p style={{ margin: '0.13rem 0', fontSize: isMobile ? '1.4rem' : '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>
                   <a href="mailto:zach@britishamericantalent.com" className="contact-agent-link">
                     zach@britishamericantalent.com
                   </a>
                 </p>
-                <p style={{ margin: '0.13rem 0', fontSize: '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>
+                <p style={{ margin: '0.13rem 0', fontSize: isMobile ? '1.4rem' : '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>
                   <a href="https://www.britishamericantalent.com" target="_blank" rel="noopener noreferrer" className="contact-agent-link">
                     britishamericantalent.com
                   </a>
                 </p>
-                <p style={{ margin: '0.13rem 0', fontSize: '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>+1 323 394 9503</p>
+                <p style={{ margin: '0.13rem 0', fontSize: isMobile ? '1.4rem' : '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>+1 323 394 9503</p>
               </div>
               <Image 
                 src="/images/british-american-talent-logo-light-theme.png" 
@@ -217,26 +217,26 @@ export default function Contact() {
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem', marginTop: '0.7rem' }}>
               <div>
                 <h3 style={{ 
-                  fontSize: '2.55rem', 
+                  fontSize: isMobile ? '1.9rem' : '2.55rem', 
                   marginBottom: '0.3rem',
                   fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
                   textTransform: 'uppercase',
                   color: '#FFFFFF',
                   whiteSpace: 'nowrap'
                 }}>Voice Acting</h3>
-                <p style={{ margin: '0.13rem 0', fontSize: '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>Paul Lynch</p>
-                <p style={{ margin: '0.13rem 0', fontSize: '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>Volcanic Talent</p>
-                <p style={{ margin: '0.13rem 0', fontSize: '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>
+                <p style={{ margin: '0.13rem 0', fontSize: isMobile ? '1.4rem' : '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>Paul Lynch</p>
+                <p style={{ margin: '0.13rem 0', fontSize: isMobile ? '1.4rem' : '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>Volcanic Talent</p>
+                <p style={{ margin: '0.13rem 0', fontSize: isMobile ? '1.4rem' : '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>
                   <a href="mailto:info@volcanic.ie" className="contact-agent-link">
                     info@volcanic.ie
                   </a>
                 </p>
-                <p style={{ margin: '0.13rem 0', fontSize: '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>
+                <p style={{ margin: '0.13rem 0', fontSize: isMobile ? '1.4rem' : '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>
                   <a href="https://volcanictalent.com/artists/amy-hughes" target="_blank" rel="noopener noreferrer" className="contact-agent-link">
                     volcanictalent.com
                   </a>
                 </p>
-                <p style={{ margin: '0.13rem 0', fontSize: '1.87rem', lineHeight: '1.3', color: '#FFFFFF', whiteSpace: 'nowrap' }}>+353 85 220 7575</p>
+                <p style={{ margin: '0.13rem 0', fontSize: isMobile ? '1.4rem' : '1.87rem', lineHeight: '1.3', color: '#FFFFFF', whiteSpace: 'nowrap' }}>+353 85 220 7575</p>
               </div>
               <Image 
                 src="/images/Volcanic-logo-light-theme.png" 
