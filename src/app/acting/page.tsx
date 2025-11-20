@@ -256,7 +256,7 @@ function ActingContent() {
       <Navigation />
     <div style={{ 
       minHeight: '100vh',
-      padding: isMobile ? '6rem 0.75rem 2rem' : '8rem 3rem 3rem',
+      padding: isMobile ? '6rem 2rem 2rem' : '8rem 3rem 3rem',
       position: 'relative',
       maxWidth: '1400px',
       margin: '0 auto'
