@@ -536,7 +536,9 @@ function ActingContent() {
                   style={{ 
                     position: 'relative',
                     width: '90%',
-                    aspectRatio: '16 / 9',
+                    paddingBottom: '50.625%',
+                    height: 0,
+                    overflow: 'hidden',
                     margin: '0 auto'
                   }}
                 >
@@ -545,6 +547,9 @@ function ActingContent() {
                     allow="autoplay"
                     title={lightboxImage.title}
                     style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
                       width: '100%',
                       height: '100%',
                       border: '2px solid #C28950',
