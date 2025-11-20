@@ -256,10 +256,11 @@ function ActingContent() {
       <Navigation />
     <div style={{ 
       minHeight: '100vh',
-      padding: isMobile ? '6rem 2rem 2rem' : '8rem 3rem 3rem',
+      padding: isMobile ? '6rem 1rem 2rem' : '8rem 3rem 3rem',
       position: 'relative',
       maxWidth: '1400px',
-      margin: '0 auto'
+      margin: '0 auto',
+      overflow: 'hidden'
     }}>
       {/* SEO-optimized header - visually hidden but accessible to search engines */}
       <h1 style={{ 
@@ -326,7 +327,8 @@ function ActingContent() {
                     width: '100%',
                     paddingBottom: '56.25%',
                     height: 0,
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    maxWidth: '100%'
                   }}>
                     <iframe
                       src={`https://drive.google.com/file/d/${reel.id}/preview`}
@@ -339,7 +341,8 @@ function ActingContent() {
                         width: '100%',
                         height: '100%',
                         border: '2px solid #C28950',
-                        borderRadius: '8px'
+                        borderRadius: '8px',
+                        maxWidth: '100%'
                       }}
                     ></iframe>
                   </div>
