@@ -332,7 +332,7 @@ function ActingContent() {
                     position: 'relative',
                     width: isMobile ? 'calc(100vw - 4rem)' : '100%',
                     maxWidth: isMobile ? 'calc(100vw - 4rem)' : '100%',
-                    paddingBottom: isMobile ? '30%' : '56.25%',
+                    paddingBottom: isMobile ? '22%' : '56.25%',
                     height: 0,
                     overflow: 'hidden'
                   }}>
