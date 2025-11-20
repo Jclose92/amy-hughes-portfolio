@@ -291,7 +291,9 @@ function ActingContent() {
         display: 'grid', 
         gridTemplateColumns: isMobile ? '1fr' : '1fr 2px 1fr', 
         gap: isMobile ? '2rem' : '3rem',
-        alignItems: 'start'
+        alignItems: 'start',
+        boxSizing: 'border-box',
+        width: '100%'
       }}>
         {/* Showreels Section */}
         <div style={{ width: '100%', overflow: 'hidden' }}>
@@ -536,10 +538,11 @@ function ActingContent() {
                   style={{ 
                     position: 'relative',
                     width: '90%',
-                    paddingBottom: '50.625%',
+                    paddingBottom: '56.25%',
                     height: 0,
                     overflow: 'hidden',
-                    margin: '0 auto'
+                    margin: '0 auto',
+                    maxWidth: '1200px'
                   }}
                 >
                   <iframe
