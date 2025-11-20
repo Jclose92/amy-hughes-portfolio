@@ -290,10 +290,11 @@ function ActingContent() {
       <div style={{ 
         display: 'grid', 
         gridTemplateColumns: isMobile ? '1fr' : '1fr 2px 1fr', 
-        gap: isMobile ? '2rem' : '3rem',
+        gap: isMobile ? '1rem' : '3rem',
         alignItems: 'start',
         boxSizing: 'border-box',
-        width: '100%'
+        width: '100%',
+        maxWidth: '100%'
       }}>
         {/* Showreels Section */}
         <div style={{ width: '100%', overflow: 'hidden', boxSizing: 'border-box' }}>
@@ -537,30 +538,66 @@ function ActingContent() {
               {lightboxImage.isVideo ? (
                 <div 
                   style={{ 
-                    position: 'relative',
                     width: '90%',
-                    paddingBottom: '56.25%',
-                    height: 0,
-                    overflow: 'hidden',
                     margin: '0 auto',
-                    maxWidth: '1200px'
+                    maxWidth: '1200px',
+                    textAlign: 'center'
                   }}
                 >
-                  <iframe
-                    src={`https://drive.google.com/file/d/${lightboxImage.id}/preview?autoplay=1`}
-                    allow="autoplay"
-                    title={lightboxImage.title}
-                    style={{
+                  {/* Video thumbnail with play button overlay */}
+                  <div style={{
+                    position: 'relative',
+                    width: '100%',
+                    paddingBottom: '56.25%',
+                    background: '#000',
+                    borderRadius: '8px',
+                    border: '3px solid #C28950',
+                    overflow: 'hidden',
+                    cursor: 'pointer'
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    window.open(`https://drive.google.com/file/d/${lightboxImage.id}/view`, '_blank')
+                  }}>
+                    <div style={{
                       position: 'absolute',
                       top: 0,
                       left: 0,
-                      width: '100%',
-                      height: '100%',
-                      border: '2px solid #C28950',
-                      borderRadius: '8px'
-                    }}
-                    onClick={(e) => e.stopPropagation()}
-                  ></iframe>
+                      right: 0,
+                      bottom: 0,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: 'rgba(0, 0, 0, 0.7)'
+                    }}>
+                      <div style={{
+                        width: '120px',
+                        height: '120px',
+                        borderRadius: '50%',
+                        background: '#C28950',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginBottom: '1rem',
+                        transition: 'transform 0.2s'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+                      onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+                        <div style={{
+                          fontSize: '4rem',
+                          color: '#FFFFFF',
+                          marginLeft: '8px'
+                        }}>▶</div>
+                      </div>
+                      <p style={{
+                        color: '#FFFFFF',
+                        fontSize: '1.5rem',
+                        fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
+                        margin: 0
+                      }}>Click to watch in new tab</p>
+                    </div>
+                  </div>
                 </div>
               ) : lightboxImage.isAudio ? (
                 <div style={{ 
