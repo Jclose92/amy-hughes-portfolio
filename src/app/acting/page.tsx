@@ -319,7 +319,7 @@ function ActingContent() {
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', width: '100%', boxSizing: 'border-box' }}>
               {showreels.map((reel, index) => (
-                <div key={reel.id} style={{ width: '100%', maxWidth: isMobile ? '100%' : '500px', boxSizing: 'border-box' }}>
+                <div key={reel.id} style={{ width: '100%', maxWidth: isMobile ? '100%' : '500px', boxSizing: 'border-box', overflow: 'hidden' }}>
                   {reel.title && (
                     <h3 style={{
                       color: '#FFFFFF',
@@ -330,11 +330,11 @@ function ActingContent() {
                   )}
                   <div style={{ 
                     position: 'relative',
-                    width: '100%',
+                    width: isMobile ? 'calc(100vw - 4rem)' : '100%',
+                    maxWidth: isMobile ? 'calc(100vw - 4rem)' : '100%',
                     paddingBottom: '56.25%',
                     height: 0,
-                    overflow: 'hidden',
-                    maxWidth: '100%'
+                    overflow: 'hidden'
                   }}>
                     <iframe
                       src={`https://drive.google.com/file/d/${reel.id}/preview`}
@@ -347,8 +347,7 @@ function ActingContent() {
                         width: '100%',
                         height: '100%',
                         border: '2px solid #C28950',
-                        borderRadius: '8px',
-                        maxWidth: '100%'
+                        borderRadius: '8px'
                       }}
                     ></iframe>
                   </div>
