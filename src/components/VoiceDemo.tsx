@@ -59,14 +59,16 @@ export default function VoiceDemo({ demo }: VoiceDemoProps) {
         boxSizing: 'border-box'
       }}>{demo.title}</h3>
       <div style={{
-        padding: '1rem',
+        padding: '0.75rem',
         background: '#1a1a1a',
         border: '2px solid #C28950',
         borderRadius: '8px',
         width: '100%',
-        boxSizing: 'border-box'
+        maxWidth: '100%',
+        boxSizing: 'border-box',
+        overflow: 'hidden'
       }}>
-        <audio ref={audioRef} controls style={{ width: '100%', maxWidth: '100%', boxSizing: 'border-box' }}>
+        <audio ref={audioRef} controls style={{ width: '100%', maxWidth: '100%', boxSizing: 'border-box', display: 'block' }}>
           <source src={demo.url} type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>

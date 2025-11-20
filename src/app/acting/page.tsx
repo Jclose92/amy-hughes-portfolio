@@ -288,6 +288,12 @@ function ActingContent() {
           As an experienced improviser with Cool Baby and Bum Notes, she brings versatility to comedy performances throughout Ireland.
         </p>
       </div>
+      <div style={{
+        width: '100%',
+        maxWidth: '100%',
+        overflow: 'hidden',
+        boxSizing: 'border-box'
+      }}>
       <div style={{ 
         display: 'grid', 
         gridTemplateColumns: isMobile ? '1fr' : '1fr 2px 1fr', 
@@ -395,6 +401,7 @@ function ActingContent() {
             </div>
           )}
         </div>
+      </div>
       </div>
 
       {/* Latest Work Section - 4 Galleries */}
@@ -542,7 +549,7 @@ function ActingContent() {
                 <div 
                   style={{ 
                     width: '90%',
-                    height: '70vh',
+                    height: isMobile ? '40vh' : '70vh',
                     margin: '0 auto',
                     maxWidth: '1200px',
                     position: 'relative'
