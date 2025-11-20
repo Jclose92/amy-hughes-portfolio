@@ -289,7 +289,7 @@ export default function Acting() {
         alignItems: 'start'
       }}>
         {/* Showreels Section */}
-        <div style={{ maxWidth: isMobile ? '100%' : 'none', overflow: 'hidden' }}>
+        <div>
           <h2 style={{ 
             fontSize: '4rem', 
             marginBottom: '2rem',
@@ -354,7 +354,7 @@ export default function Acting() {
         )}
 
         {/* Voice Demos Section */}
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100%', maxWidth: isMobile ? '100%' : 'none', overflow: 'hidden' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
           <h2 style={{ 
             fontSize: '4rem', 
             marginBottom: '2rem',

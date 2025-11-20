@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
+import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { MediaPlayerProvider } from '@/contexts/MediaPlayerContext'
 import VoiceDemo from '@/components/VoiceDemo'
@@ -238,55 +239,7 @@ export default function Home() {
       )}
 
       {/* Fixed Navigation Bar */}
-      <nav style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 1000,
-        padding: '1rem 2rem',
-        display: 'flex',
-        gap: '3rem',
-        alignItems: 'center',
-        background: 'url(/images/Website Wallpaper.jpeg) fixed center/cover',
-        backgroundColor: '#000000',
-        fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif'
-      }}>
-        <a href="/" style={{
-          color: '#C28950',
-          fontSize: '3.12rem',
-          textShadow: '1px 1px 3px rgba(0, 0, 0, 0.5)',
-          marginRight: 'auto',
-          textDecoration: 'none',
-          cursor: 'pointer'
-        }}>Amy Hughes</a>
-        <div style={{ display: 'flex', gap: '3rem', marginRight: 'auto', marginLeft: 'auto' }}>
-          <a href="/" style={{
-            color: '#C28950',
-            textDecoration: 'none',
-            fontSize: '3.12rem',
-            transition: 'all 0.3s ease',
-            textTransform: 'uppercase',
-            textShadow: '1px 1px 3px rgba(0, 0, 0, 0.5)'
-          }}>Amy</a>
-          <a href="/acting" style={{
-            color: '#C28950',
-            textDecoration: 'none',
-            fontSize: '3.12rem',
-            transition: 'all 0.3s ease',
-            textTransform: 'uppercase',
-            textShadow: '1px 1px 3px rgba(0, 0, 0, 0.5)'
-          }}>Work</a>
-          <a href="/contact" style={{
-            color: '#C28950',
-            textDecoration: 'none',
-            fontSize: '3.12rem',
-            transition: 'all 0.3s ease',
-            textTransform: 'uppercase',
-            textShadow: '1px 1px 3px rgba(0, 0, 0, 0.5)'
-          }}>Contact</a>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero Section with Headshot */}
       {isMobile ? (
@@ -297,13 +250,24 @@ export default function Home() {
             height: '60vh',
             overflow: 'hidden'
           }}>
-            <Image
-              src="https://drive.google.com/uc?export=download&id=1CGxVQFEhbMPp4vGV_VAG-qMgGtyg0upI"
-              alt="Amy Hughes - Professional Headshot"
-              fill
-              style={{ objectFit: 'cover', objectPosition: 'left center' }}
-              priority
-            />
+            {/* Image with gradient mask */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)',
+              maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)'
+            }}>
+              <Image
+                src="https://drive.google.com/uc?export=download&id=1CGxVQFEhbMPp4vGV_VAG-qMgGtyg0upI"
+                alt="Amy Hughes - Professional Headshot"
+                fill
+                style={{ objectFit: 'cover', objectPosition: 'left center' }}
+                priority
+              />
+            </div>
             
             {/* Name and Tagline - Overlaid on image */}
             <div style={{
@@ -315,8 +279,8 @@ export default function Home() {
               fontFamily: 'Saonara, serif',
               textShadow: '3px 3px 10px rgba(0, 0, 0, 0.9)'
             }}>
-              <div style={{ fontSize: '4rem', marginBottom: '0.5rem' }}>Amy Hughes</div>
-              <div style={{ fontSize: '2.4rem', lineHeight: 1.1 }}>
+              <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>Amy Hughes</div>
+              <div style={{ fontSize: '1.8rem', lineHeight: 1.1 }}>
                 Actor, Comedian, and
                 <br />
                 Voiceover Artist
@@ -612,65 +576,7 @@ export default function Home() {
           gap: isMobile ? '2rem' : '3rem',
           alignItems: 'start'
         }}>
-          {/* Resumé Section - Left */}
-          <div style={{ 
-            maxWidth: '100%',
-            overflow: 'hidden'
-          }}>
-            <h2 style={{ 
-              fontSize: '4rem', 
-              marginBottom: '2rem',
-              fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
-              color: '#C28950'
-            }}>Resumé</h2>
-            
-            {resumeUrl ? (
-              <div
-                onClick={() => setShowResumeLightbox(true)}
-                style={{
-                  cursor: 'pointer',
-                  backgroundColor: '#FFFFFF',
-                  padding: '2rem',
-                  borderRadius: '8px',
-                  border: '2px solid #C28950',
-                  minHeight: '800px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'transform 0.2s',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-              >
-                <iframe
-                  src={resumeUrl}
-                  style={{
-                    width: '100%',
-                    height: '800px',
-                    border: 'none',
-                    pointerEvents: 'none'
-                  }}
-                  title="Resume Preview"
-                />
-              </div>
-            ) : (
-              <p style={{ color: '#FFFFFF' }}>Loading resumé...</p>
-            )}
-          </div>
-
-          {/* Divider (hidden on mobile) */}
-          {!isMobile && (
-            <div style={{ 
-              width: '2px', 
-              height: '100%', 
-              backgroundColor: '#C28950',
-              minHeight: '500px'
-            }}></div>
-          )}
-
-          {/* Latest Shows Section - Right */}
+          {/* Latest Shows Section - Left */}
           <div style={{ 
             maxWidth: '100%',
             overflow: 'hidden'
@@ -798,6 +704,64 @@ export default function Home() {
               </div>
             ) : (
               <p style={{ color: '#FFFFFF' }}>No upcoming shows at the moment.</p>
+            )}
+          </div>
+
+          {/* Divider (hidden on mobile) */}
+          {!isMobile && (
+            <div style={{ 
+              width: '2px', 
+              height: '100%', 
+              backgroundColor: '#C28950',
+              minHeight: '500px'
+            }}></div>
+          )}
+
+          {/* Resumé Section - Right */}
+          <div style={{ 
+            maxWidth: '100%',
+            overflow: 'hidden'
+          }}>
+            <h2 style={{ 
+              fontSize: '4rem', 
+              marginBottom: '2rem',
+              fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
+              color: '#C28950'
+            }}>Resumé</h2>
+            
+            {resumeUrl ? (
+              <div
+                onClick={() => setShowResumeLightbox(true)}
+                style={{
+                  cursor: 'pointer',
+                  backgroundColor: '#FFFFFF',
+                  padding: '2rem',
+                  borderRadius: '8px',
+                  border: '2px solid #C28950',
+                  minHeight: '800px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'transform 0.2s',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+              >
+                <iframe
+                  src={resumeUrl}
+                  style={{
+                    width: '100%',
+                    height: '800px',
+                    border: 'none',
+                    pointerEvents: 'none'
+                  }}
+                  title="Resume Preview"
+                />
+              </div>
+            ) : (
+              <p style={{ color: '#FFFFFF' }}>Loading resumé...</p>
             )}
           </div>
         </section>
