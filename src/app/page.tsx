@@ -243,7 +243,7 @@ export default function Home() {
 
       {/* Hero Section with Headshot */}
       {isMobile ? (
-        <section style={{ marginTop: '5rem', padding: '0' }}>
+        <section style={{ marginTop: '1rem', padding: '0' }}>
           <div style={{
             position: 'relative',
             width: '100%',
@@ -269,7 +269,7 @@ export default function Home() {
               />
             </div>
             
-            {/* Name and Tagline - Overlaid on image at TOP */}
+            {/* Name - Overlaid on image at TOP */}
             <div style={{
               position: 'absolute',
               top: '2rem',
@@ -279,7 +279,19 @@ export default function Home() {
               fontFamily: 'Saonara, serif',
               textShadow: '3px 3px 10px rgba(0, 0, 0, 0.9)'
             }}>
-              <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>Amy Hughes</div>
+              <div style={{ fontSize: '3.6rem' }}>Amy Hughes</div>
+            </div>
+            
+            {/* Tagline - at BOTTOM of headshot */}
+            <div style={{
+              position: 'absolute',
+              bottom: '2rem',
+              left: '1.5rem',
+              right: '1.5rem',
+              color: '#FFFFFF',
+              fontFamily: 'Saonara, serif',
+              textShadow: '3px 3px 10px rgba(0, 0, 0, 0.9)'
+            }}>
               <div style={{ fontSize: '1.8rem', lineHeight: 1.1 }}>
                 Actor, Comedian, and
                 <br />
@@ -338,7 +350,7 @@ export default function Home() {
           width: '100vw', 
           height: '100vh',
           overflow: 'hidden',
-          marginTop: '5rem'
+          marginTop: '1rem'
         }}>
           <div style={{
             position: 'absolute',
@@ -669,14 +681,19 @@ export default function Home() {
                           </p>
                         )}
                         
-                        {/* Description */}
+                        {/* Description - limited to 3 lines */}
                         {show.description && (
                           <p style={{
                             fontSize: '1.3rem',
                             color: '#FFFFFF',
                             fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
                             lineHeight: '1.4',
-                            margin: 0
+                            margin: 0,
+                            overflow: 'hidden',
+                            display: '-webkit-box',
+                            WebkitLineClamp: 3,
+                            WebkitBoxOrient: 'vertical',
+                            textOverflow: 'ellipsis'
                           }}>
                             {show.description}
                           </p>
@@ -783,7 +800,9 @@ export default function Home() {
                       width: '100%',
                       height: '100%',
                       border: 'none',
-                      pointerEvents: 'none'
+                      pointerEvents: 'none',
+                      transform: 'scale(1)',
+                      transformOrigin: 'top left'
                     }}
                     title="Resume Preview"
                   />
