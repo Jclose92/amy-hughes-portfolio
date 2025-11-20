@@ -31,8 +31,8 @@ export default function Footer() {
         <Image 
           src="/images/Volcanic-logo-light-theme.png" 
           alt="Volcanic Talent" 
-          width={72}
-          height={72}
+          width={101}
+          height={101}
         />
       </a>
     </footer>

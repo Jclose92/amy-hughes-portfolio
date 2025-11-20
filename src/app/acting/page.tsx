@@ -456,76 +456,77 @@ export default function Acting() {
               ×
             </button>
             
-            {/* Previous Arrow */}
-            {lightboxGallery.length > 1 && (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation()
-                  navigateLightbox('prev')
-                }}
-                style={{
-                  position: 'absolute',
-                  left: '2rem',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  background: 'transparent',
-                  border: 'none',
-                  color: '#C28950',
-                  fontSize: '4rem',
-                  cursor: 'pointer',
-                  padding: '0',
-                  width: '4rem',
-                  height: '4rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  zIndex: 1001,
-                  lineHeight: 1
-                }}
-                aria-label="Previous"
-              >
-                ‹
-              </button>
-            )}
-            
-            {/* Next Arrow */}
-            {lightboxGallery.length > 1 && (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation()
-                  navigateLightbox('next')
-                }}
-                style={{
-                  position: 'absolute',
-                  right: '2rem',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  background: 'transparent',
-                  border: 'none',
-                  color: '#C28950',
-                  fontSize: '4rem',
-                  cursor: 'pointer',
-                  padding: '0',
-                  width: '4rem',
-                  height: '4rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  zIndex: 1001,
-                  lineHeight: 1
-                }}
-                aria-label="Next"
-              >
-                ›
-              </button>
-            )}
-            
-            <div style={{ textAlign: 'center', width: '100%', padding: '0 8rem' }}>
+            <div style={{ textAlign: 'center', width: '100%', padding: '0 2rem', position: 'relative' }}>
+              {/* Previous Arrow - hovering over content */}
+              {lightboxGallery.length > 1 && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    navigateLightbox('prev')
+                  }}
+                  style={{
+                    position: 'absolute',
+                    left: '1rem',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'rgba(0, 0, 0, 0.5)',
+                    border: 'none',
+                    color: '#C28950',
+                    fontSize: '4rem',
+                    cursor: 'pointer',
+                    padding: '0',
+                    width: '4rem',
+                    height: '4rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 1001,
+                    lineHeight: 1,
+                    borderRadius: '50%'
+                  }}
+                  aria-label="Previous"
+                >
+                  ‹
+                </button>
+              )}
+              
+              {/* Next Arrow - hovering over content */}
+              {lightboxGallery.length > 1 && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    navigateLightbox('next')
+                  }}
+                  style={{
+                    position: 'absolute',
+                    right: '1rem',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'rgba(0, 0, 0, 0.5)',
+                    border: 'none',
+                    color: '#C28950',
+                    fontSize: '4rem',
+                    cursor: 'pointer',
+                    padding: '0',
+                    width: '4rem',
+                    height: '4rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 1001,
+                    lineHeight: 1,
+                    borderRadius: '50%'
+                  }}
+                  aria-label="Next"
+                >
+                  ›
+                </button>
+              )}
               {lightboxImage.isVideo ? (
                 <div 
                   style={{ 
                     position: 'relative',
-                    width: '70%',
+                    width: '90%',
                     aspectRatio: '16 / 9',
                     margin: '0 auto'
                   }}
@@ -545,7 +546,7 @@ export default function Acting() {
                 </div>
               ) : lightboxImage.isAudio ? (
                 <div style={{ 
-                  width: '70%',
+                  width: '90%',
                   margin: '0 auto',
                   padding: '3rem',
                   background: '#FFFFFF',
@@ -581,10 +582,10 @@ export default function Acting() {
                   alt={lightboxImage.title}
                   width={1200}
                   height={800}
-                  style={{ maxWidth: '100%', maxHeight: '80vh', objectFit: 'contain' }}
+                  style={{ maxWidth: '90%', maxHeight: '70vh', objectFit: 'contain' }}
                 />
               )}
-              <div style={{ marginTop: '1rem' }}>
+              <div style={{ marginTop: '1rem', padding: '0 2rem' }}>
                 <p style={{ 
                   color: '#C28950', 
                   fontSize: '2.5rem', 
@@ -598,7 +599,9 @@ export default function Acting() {
                     color: '#FFFFFF', 
                     fontSize: '1.5rem', 
                     fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
-                    opacity: 0.9
+                    opacity: 0.9,
+                    maxWidth: '900px',
+                    margin: '0 auto'
                   }}>
                     {lightboxImage.description}
                   </p>

@@ -19,16 +19,17 @@ export default function Navigation() {
   }, [])
 
   return (
-    <nav style={{ display: 'flex', gap: isMobile ? '0.5rem' : '3rem', alignItems: 'center', padding: isMobile ? '0 0.35rem' : '0', flexWrap: 'wrap' }}>
+    <nav style={{ display: 'flex', gap: isMobile ? '0.5rem' : '3rem', alignItems: 'center', padding: isMobile ? '0.25rem 0.35rem' : '0.6rem 2rem', flexWrap: 'wrap' }}>
       <Link href="/" style={{
         color: '#C28950',
         fontSize: isMobile ? '1.85rem' : '3.12rem',
         textShadow: '1px 1px 3px rgba(0, 0, 0, 0.5)',
         marginRight: 'auto',
+        marginLeft: isMobile ? '0.5rem' : '25px',
         fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
         textDecoration: 'none'
       }}>{isMobile ? 'AH' : 'Amy Hughes'}</Link>
-      <div style={{ display: 'flex', gap: isMobile ? '0.5rem' : '3rem', marginRight: 'auto', marginLeft: 'auto', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: isMobile ? '0.5rem' : '3rem', marginRight: 'auto', marginLeft: 'auto', flexWrap: 'wrap', paddingTop: isMobile ? '0' : '8px' }}>
         <Link href="/" style={{
           color: '#C28950',
           textDecoration: 'none',

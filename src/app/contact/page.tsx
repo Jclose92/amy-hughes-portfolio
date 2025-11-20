@@ -175,8 +175,9 @@ export default function Contact() {
           }}>Representation</h2>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            {/* Acting Section */}
-            <div>
+            {/* Acting Section with Logo */}
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem' }}>
+              <div>
                 <h3 style={{ 
                   fontSize: isMobile ? '1.9rem' : '2.55rem', 
                   marginBottom: '0.3rem',
@@ -198,10 +199,25 @@ export default function Contact() {
                   </a>
                 </p>
                 <p style={{ margin: '0.13rem 0', fontSize: isMobile ? '1.4rem' : '1.87rem', lineHeight: '1.3', color: '#FFFFFF' }}>+1 323 394 9503</p>
+              </div>
+              {!isMobile && (
+                <Image 
+                  src="/images/british-american-talent-logo-light-theme.png" 
+                  alt="British American Talent" 
+                  width={180}
+                  height={90}
+                  style={{ 
+                    objectFit: 'contain',
+                    filter: 'brightness(0) saturate(100%) invert(54%) sepia(18%) saturate(1247%) hue-rotate(353deg) brightness(91%) contrast(87%)',
+                    marginTop: '-10px'
+                  }}
+                />
+              )}
             </div>
 
-            {/* Voice Acting Section */}
-            <div style={{ marginTop: '0.7rem' }}>
+            {/* Voice Acting Section with Logo */}
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem', marginTop: '0.7rem' }}>
+              <div>
                 <h3 style={{ 
                   fontSize: isMobile ? '1.9rem' : '2.55rem', 
                   marginBottom: '0.3rem',
@@ -223,6 +239,21 @@ export default function Contact() {
                   </a>
                 </p>
                 <p style={{ margin: '0.13rem 0', fontSize: isMobile ? '1.4rem' : '1.87rem', lineHeight: '1.3', color: '#FFFFFF', whiteSpace: 'nowrap' }}>+353 85 220 7575</p>
+              </div>
+              {!isMobile && (
+                <Image 
+                  src="/images/Volcanic-logo-light-theme.png" 
+                  alt="Volcanic Talent" 
+                  width={240}
+                  height={120}
+                  style={{ 
+                    objectFit: 'contain',
+                    filter: 'brightness(0) saturate(100%) invert(54%) sepia(18%) saturate(1247%) hue-rotate(353deg) brightness(91%) contrast(87%)',
+                    marginLeft: '110px',
+                    marginTop: '80px'
+                  }}
+                />
+              )}
             </div>
           </div>
           </div>

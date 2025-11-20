@@ -269,10 +269,10 @@ export default function Home() {
               />
             </div>
             
-            {/* Name and Tagline - Overlaid on image */}
+            {/* Name and Tagline - Overlaid on image at TOP */}
             <div style={{
               position: 'absolute',
-              bottom: '2rem',
+              top: '2rem',
               left: '1.5rem',
               right: '1.5rem',
               color: '#FFFFFF',
@@ -483,7 +483,7 @@ export default function Home() {
             alignItems: 'start'
           }}>
             {/* Showreel Section - Left */}
-            <div>
+            <div style={{ maxWidth: '100%', overflow: 'hidden' }}>
               <h2 style={{ 
                 fontSize: '4rem', 
                 marginBottom: '2rem',
@@ -504,6 +504,7 @@ export default function Home() {
                   <div style={{ 
                     position: 'relative',
                     width: '100%',
+                    maxWidth: '100%',
                     aspectRatio: '16 / 9',
                     height: 'auto'
                   }}>
@@ -541,7 +542,7 @@ export default function Home() {
             )}
 
             {/* Voice Demos Section - Right */}
-            <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', height: '100%', maxWidth: '100%', overflow: 'hidden' }}>
               <h2 style={{ 
                 fontSize: '4rem', 
                 marginBottom: '2rem',
@@ -576,7 +577,7 @@ export default function Home() {
           gap: isMobile ? '2rem' : '3rem',
           alignItems: 'start'
         }}>
-          {/* Latest Shows Section - Left */}
+          {/* Resumé Section - Left (Desktop) / Latest Shows First (Mobile) */}
           <div style={{ 
             maxWidth: '100%',
             overflow: 'hidden'
@@ -586,9 +587,10 @@ export default function Home() {
               marginBottom: '2rem',
               fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
               color: '#C28950'
-            }}>Latest Shows</h2>
+            }}>{isMobile ? 'Latest Shows' : 'Resumé'}</h2>
             
-            {upcomingShows.length > 0 ? (
+            {isMobile ? (
+              upcomingShows.length > 0 ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 {upcomingShows.map((show, index) => (
                   <a
@@ -702,8 +704,44 @@ export default function Home() {
                   </a>
                 ))}
               </div>
+              ) : (
+                <p style={{ color: '#FFFFFF' }}>No upcoming shows at the moment.</p>
+              )
             ) : (
-              <p style={{ color: '#FFFFFF' }}>No upcoming shows at the moment.</p>
+              resumeUrl ? (
+                <div
+                  onClick={() => setShowResumeLightbox(true)}
+                  style={{
+                    cursor: 'pointer',
+                    backgroundColor: '#FFFFFF',
+                    padding: '2rem',
+                    borderRadius: '8px',
+                    border: '2px solid #C28950',
+                    minHeight: '800px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'transform 0.2s',
+                    position: 'relative',
+                    overflow: 'hidden'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                  <iframe
+                    src={resumeUrl}
+                    style={{
+                      width: '100%',
+                      height: '800px',
+                      border: 'none',
+                      pointerEvents: 'none'
+                    }}
+                    title="Resume Preview"
+                  />
+                </div>
+              ) : (
+                <p style={{ color: '#FFFFFF' }}>Loading resumé...</p>
+              )
             )}
           </div>
 
@@ -717,7 +755,7 @@ export default function Home() {
             }}></div>
           )}
 
-          {/* Resumé Section - Right */}
+          {/* Latest Shows Section - Right (Desktop) / Resumé Second (Mobile) */}
           <div style={{ 
             maxWidth: '100%',
             overflow: 'hidden'
@@ -727,41 +765,159 @@ export default function Home() {
               marginBottom: '2rem',
               fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
               color: '#C28950'
-            }}>Resumé</h2>
+            }}>{isMobile ? 'Resumé' : 'Latest Shows'}</h2>
             
-            {resumeUrl ? (
-              <div
-                onClick={() => setShowResumeLightbox(true)}
-                style={{
-                  cursor: 'pointer',
-                  backgroundColor: '#FFFFFF',
-                  padding: '2rem',
-                  borderRadius: '8px',
-                  border: '2px solid #C28950',
-                  minHeight: '800px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'transform 0.2s',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-              >
-                <iframe
-                  src={resumeUrl}
+            {isMobile ? (
+              resumeUrl ? (
+                <div
+                  onClick={() => setShowResumeLightbox(true)}
                   style={{
-                    width: '100%',
-                    height: '800px',
-                    border: 'none',
-                    pointerEvents: 'none'
+                    cursor: 'pointer',
+                    backgroundColor: '#FFFFFF',
+                    padding: isMobile ? '1rem' : '2rem',
+                    borderRadius: '8px',
+                    border: '2px solid #C28950',
+                    aspectRatio: '1 / 1.414',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'transform 0.2s',
+                    position: 'relative',
+                    overflow: 'hidden'
                   }}
-                  title="Resume Preview"
-                />
-              </div>
+                >
+                  <iframe
+                    src={resumeUrl}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      border: 'none',
+                      pointerEvents: 'none'
+                    }}
+                    title="Resume Preview"
+                  />
+                </div>
+              ) : (
+                <p style={{ color: '#FFFFFF' }}>Loading resumé...</p>
+              )
             ) : (
-              <p style={{ color: '#FFFFFF' }}>Loading resumé...</p>
+              upcomingShows.length > 0 ? (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  {upcomingShows.map((show, index) => (
+                    <a
+                      key={index}
+                      href={show.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: 'flex',
+                        gap: '1.5rem',
+                        textDecoration: 'none',
+                        cursor: 'pointer',
+                        transition: 'transform 0.2s',
+                        alignItems: 'flex-start'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                      onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                    >
+                      {/* Show Image */}
+                      <div style={{
+                        width: '200px',
+                        height: '200px',
+                        flexShrink: 0,
+                        position: 'relative',
+                        overflow: 'hidden',
+                        borderRadius: '8px',
+                        border: '2px solid #C28950'
+                      }}>
+                        <Image
+                          src={show.image}
+                          alt={show.title}
+                          fill
+                          style={{ objectFit: 'cover' }}
+                          sizes="200px"
+                          unoptimized
+                          loading="lazy"
+                        />
+                      </div>
+
+                      {/* Show Details */}
+                      <div style={{ 
+                        flex: 1,
+                        height: '200px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        overflow: 'hidden'
+                      }}>
+                        {/* Title - single line with ellipsis */}
+                        <h3 style={{
+                          fontSize: '2.125rem',
+                          marginBottom: '0.3rem',
+                          fontFamily: 'UpperEastSide, Arial, Helvetica, sans-serif',
+                          color: '#C28950',
+                          lineHeight: '1.1',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap'
+                        }}>{show.title}</h3>
+                        
+                        {/* Date and Location */}
+                        {(show.date || show.location) && (
+                          <div style={{ marginBottom: '0.5rem' }}>
+                            {show.date && (
+                              <p style={{
+                                fontSize: '1.3rem',
+                                color: '#FFFFFF',
+                                fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
+                                marginBottom: '0.2rem',
+                                lineHeight: '1.2',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap'
+                              }}>
+                                {show.date}
+                              </p>
+                            )}
+                            {show.location && (
+                              <p style={{
+                                fontSize: '1.3rem',
+                                color: '#FFFFFF',
+                                fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
+                                marginBottom: '0.2rem',
+                                lineHeight: '1.2',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap'
+                              }}>
+                                {show.location}
+                              </p>
+                            )}
+                          </div>
+                        )}
+                        
+                        {/* Description - limited lines with ellipsis */}
+                        {show.description && (
+                          <p style={{
+                            fontSize: '1.3rem',
+                            color: '#FFFFFF',
+                            fontFamily: 'Josefin Sans, Arial, Helvetica, sans-serif',
+                            lineHeight: '1.3',
+                            overflow: 'hidden',
+                            display: '-webkit-box',
+                            WebkitLineClamp: (show.date && show.location) ? 2 : (show.date || show.location) ? 3 : 4,
+                            WebkitBoxOrient: 'vertical',
+                            textOverflow: 'ellipsis'
+                          }}>
+                            {show.description}
+                          </p>
+                        )}
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <p style={{ color: '#FFFFFF' }}>No upcoming shows at the moment.</p>
+              )
             )}
           </div>
         </section>
