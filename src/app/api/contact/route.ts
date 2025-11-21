@@ -46,8 +46,11 @@ export async function POST(request: Request) {
     console.log('To:', process.env.CONTACT_RECIPIENT_EMAIL)
     console.log('Reply-To:', email)
     
+    // Use custom domain if configured, otherwise use default
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'Amy Hughes Portfolio <onboarding@resend.dev>'
+    
     const { data, error } = await resend.emails.send({
-      from: 'Amy Hughes Portfolio <onboarding@resend.dev>',
+      from: fromEmail,
       to: process.env.CONTACT_RECIPIENT_EMAIL,
       replyTo: email,
       subject: `New message from ${name} - Portfolio Contact Form`,
